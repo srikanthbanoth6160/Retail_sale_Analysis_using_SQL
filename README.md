@@ -27,6 +27,22 @@ The main objectives are to clean the data, explore it for insights, and solve ke
 - Used **window functions** to rank best-selling months in each year.
 
 ---
+## 📊 Visualized with Tableau
+
+To enhance the insights derived from SQL analysis, interactive Tableau dashboards were created:
+
+- **📦 Sales by Category & Shift**  
+  Visualized transaction volumes across different product categories and time-of-day segments (Morning, Afternoon, Evening).
+
+- **👥 Customer Demographics (Age/Gender)**  
+  Analyzed customer distribution and purchase behavior by age groups and gender.
+
+- **📆 Top Performing Months & Customers**  
+  Highlighted peak sales months and top 5 high-value customers using ranking and aggregation.
+
+- **📈 Revenue Trends Over Time**  
+  Tracked total and average monthly revenue trends to identify seasonality and business growth patterns.
+
 
 ## 🧠 Insights Derived
 
