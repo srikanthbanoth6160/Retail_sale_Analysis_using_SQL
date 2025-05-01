@@ -1,38 +1,57 @@
-# 🛍️ Retail Sales Analysis using SQL
+# 🛍️ Retail Sales Data Analysis with SQL
 
-This project focuses on performing comprehensive data analysis on a fictional retail sales dataset using SQL. The main objectives are to clean the data, explore it for insights, and solve key business problems using well-structured SQL queries.
+This project focuses on performing comprehensive data analysis on a fictional **retail sales dataset** using SQL.  
+The main objectives are to clean the data, explore it for insights, and solve key business problems using well-structured SQL queries.
 
-🔧 Key Features:
-Data Preparation: Created a RETAIL_SALES table with appropriate schema design and ensured data integrity by identifying and removing null records.
+---
 
-Data Exploration:
+## 🔧 Key Features
 
-Counted total transactions and unique customers.
+### 🗃️ Data Preparation
+- Created a `RETAIL_SALES` table with appropriate schema design.
+- Ensured data integrity by identifying and removing records with `NULL` values.
 
-Identified available product categories.
+### 🔍 Data Exploration
+- Counted total number of transactions and unique customers.
+- Identified all available product categories.
 
-Business-Focused Analysis:
+### 📈 Business-Focused Analysis
+- Tracked daily sales and filtered sales by date and category.
+- Calculated total and average sales per category and per month.
+- Identified top-performing customers and high-value transactions.
+- Segmented orders based on **time of day** into:
+  - Morning
+  - Afternoon
+  - Evening
+- Evaluated customer demographics (e.g., average age per product category).
+- Used **window functions** to rank best-selling months in each year.
 
-Tracked daily sales, including filtering sales by specific dates and categories.
+---
 
-Computed total and average sales per category and month.
+## 🧠 Insights Derived
 
-Identified top-performing customers and high-value transactions.
+- 🏅 Identified **top 5 customers** by total purchase volume.
+- 📦 Determined which **product category** had the highest number of unique buyers.
+- 📊 Ranked months by **average sales** to reveal seasonal trends.
+- ⏰ Analyzed sales shifts to understand **peak transaction hours**.
 
-Segmented orders based on time of day into Morning, Afternoon, and Evening shifts.
+---
 
-Evaluated customer demographics such as average age for specific product categories.
+## 🛠️ Tools & Technologies Used
 
-Ranked best-selling months using window functions.
+- **SQL (PostgreSQL / MySQL)**
+- SQL Window Functions
+- Data Cleaning & Aggregation
+- Git & GitHub for version control
 
-🧠 Insights Derived:
-Found top 5 customers by total purchase volume.
+---
 
-Determined which category had the highest number of unique buyers.
+## 📂 Project Status
 
-Ranked months by average sales to discover seasonal trends.
+✅ **Complete**  
+📊 Ready for integration into BI tools like **Tableau** or **Power BI**  
+🧩 Extendable for advanced analytics and dashboarding
 
-Analyzed sales shifts to understand peak transaction hours.
 
 This analysis helps businesses gain actionable insights on customer behavior, sales trends, and performance across different product segments.
 ## 📁 Table of Contents
