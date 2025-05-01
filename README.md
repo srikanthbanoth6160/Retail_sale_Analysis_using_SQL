@@ -37,6 +37,21 @@ The main objectives are to clean the data, explore it for insights, and solve ke
 
 ---
 
+## ❓ Business Questions Answered
+
+1. Retrieve all sales made on a specific date (`2022-11-05`).
+2. Filter clothing sales with quantity ≥ 4 in November 2022.
+3. Calculate total sales and number of transactions per category.
+4. Find the average age of customers who bought beauty products.
+5. Identify transactions with total sale amount greater than 1000.
+6. Count number of transactions by gender and category.
+7. Determine the best-selling month (based on average sales) per year.
+8. Find the top 5 customers based on total sales.
+9. Count unique customers for each product category.
+10. Segment orders into shifts (Morning, Afternoon, Evening) and count total orders per shift.
+
+---
+
 ## 🛠️ Tools & Technologies Used
 
 - **SQL (PostgreSQL / MySQL)**
@@ -50,185 +65,15 @@ The main objectives are to clean the data, explore it for insights, and solve ke
 
 ✅ **Complete**  
 📊 Ready for integration into BI tools like **Tableau** or **Power BI**  
-🧩 Extendable for advanced analytics and dashboarding
-
-
-This analysis helps businesses gain actionable insights on customer behavior, sales trends, and performance across different product segments.
-## 📁 Table of Contents
-- [Dataset Schema](#dataset-schema)
-- [Data Cleaning](#data-cleaning)
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Business Questions & Solutions](#business-questions--solutions)
-- [Insights & Summary](#insights--summary)
+🧩 Extendable for predictive analytics or advanced dashboarding
 
 ---
 
-# 🛍️ Retail Sales Analysis using SQL
+## 👨‍💻 Author
 
-This project focuses on SQL-based analysis of a retail sales dataset, covering everything from data preparation to answering key business questions.
-
----
-
-## 📊 Dataset Schema
-
-```sql
-DROP TABLE IF EXISTS retail_sales;
-
-CREATE TABLE retail_sales (
-    transactions_id     INT PRIMARY KEY,
-    sale_date           DATE,
-    sale_time           TIME,
-    customer_id         INT,
-    gender              VARCHAR(15),
-    age                 INT,
-    category            VARCHAR(15),    
-    quantity            INT,
-    price_per_unit      FLOAT,
-    cogs                FLOAT,
-    total_sale          FLOAT
-);
-
-🧹 Data Cleaning
-✅ Check total number of rows
-SELECT COUNT(*) FROM retail_sales;
-❓ Find and remove null values
-
-SELECT * 
-FROM retail_sales
-WHERE transactions_id IS NULL
-   OR sale_date IS NULL
-   OR sale_time IS NULL
-   OR customer_id IS NULL
-   OR gender IS NULL 
-   OR category IS NULL
-   OR quantity IS NULL
-   OR price_per_unit IS NULL
-   OR cogs IS NULL
-   OR total_sale IS NULL;
-
-DELETE  
-FROM retail_sales
-WHERE transactions_id IS NULL
-   OR sale_date IS NULL
-   OR sale_time IS NULL
-   OR customer_id IS NULL
-   OR gender IS NULL 
-   OR category IS NULL
-   OR quantity IS NULL
-   OR price_per_unit IS NULL
-   OR cogs IS NULL
-   OR total_sale IS NULL;
-🔍 Exploratory Data Analysis
-👥 How many unique customers?
-
-SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
-🛍️ What product categories are there?
-
-SELECT DISTINCT category FROM retail_sales;
-🧾 Total number of sales?
-
-SELECT COUNT(*) AS total_sales FROM retail_sales;
-💼 Business Questions & Solutions
-1️⃣ Retrieve all sales made on 2022-11-05
-
-SELECT * 
-FROM retail_sales 
-WHERE sale_date = '2022-11-05';
-2️⃣ Clothing sales with quantity >= 4 in November 2022
-
-SELECT * 
-FROM retail_sales 
-WHERE category = 'Clothing' 
-  AND quantity >= 4 
-  AND TO_CHAR(sale_date, 'YYYY-MM') = '2022-11';
-3️⃣ Total sales and number of transactions by category
-
-SELECT category, SUM(total_sale) AS total_sales, COUNT(*) AS num_transactions 
-FROM retail_sales 
-GROUP BY category;
-4️⃣ Average age of customers who purchased Beauty products
-
-SELECT ROUND(AVG(age), 2) AS avg_age 
-FROM retail_sales 
-WHERE category = 'Beauty';
-5️⃣ Transactions with total sale > 1000
-
-SELECT * 
-FROM retail_sales 
-WHERE total_sale > 1000;
-6️⃣ Number of transactions by gender and category
-
-SELECT gender, category, COUNT(*) AS num_of_transactions 
-FROM retail_sales 
-GROUP BY gender, category;
-7️⃣ Best selling month (average sale) each year
-
-SELECT * 
-FROM (
-    SELECT 
-        EXTRACT(YEAR FROM sale_date) AS year,
-        EXTRACT(MONTH FROM sale_date) AS month,
-        AVG(total_sale) AS avg_sale,
-        RANK() OVER (
-            PARTITION BY EXTRACT(YEAR FROM sale_date) 
-            ORDER BY AVG(total_sale) DESC
-        ) AS rank
-    FROM retail_sales 
-    GROUP BY 1, 2
-) ranked_sales
-WHERE rank = 1;
-8️⃣ Top 5 customers by total sales
-
-SELECT customer_id, SUM(total_sale) AS total_spent 
-FROM retail_sales 
-GROUP BY customer_id 
-ORDER BY total_spent DESC 
-LIMIT 5;
-9️⃣ Unique customers per product category
-
-SELECT category, COUNT(DISTINCT customer_id) AS unique_customers 
-FROM retail_sales 
-GROUP BY category;
-🔟 Number of orders by time of day (shifts)
-
-WITH hourly_sale AS (
-    SELECT *,
-           CASE
-               WHEN EXTRACT(HOUR FROM sale_time) < 12 THEN 'Morning'
-               WHEN EXTRACT(HOUR FROM sale_time) BETWEEN 12 AND 17 THEN 'Afternoon'
-               ELSE 'Evening'
-           END AS shift
-    FROM retail_sales
-)
-SELECT shift, COUNT(*) AS total_orders 
-FROM hourly_sale 
-GROUP BY shift;
-📌 Insights & Summary
-✅ Identified and removed 3 rows with missing data.
-
-👤 Top 5 customers contributed significantly to total revenue.
-
-💄 Beauty and 👕 Clothing were among the most popular categories.
-
-📅 Best-selling months varied by year, showing seasonal patterns.
-
-🕒 Most transactions occurred during the Afternoon shift.
-
-🚀 Technologies Used
-PostgreSQL / MySQL
-
-SQL Window Functions
-
-Data Cleaning & Aggregation
-
-Git & GitHub for version control
-
-📂 Project Status
-✅ Complete
-🔧 Ready for dashboarding with Tableau / Power BI
-📈 Suitable for trend analysis and business decision-making
-
----
-
+**Srikanth Banoth**  
+_Data Analyst | SQL Enthusiast | BI Developer_  
+📫 [LinkedIn](https://www.linkedin.com/in/srikanth-banoth-736987210/)   
+📧 srikanthbanoth1100@email.com 
 
 
